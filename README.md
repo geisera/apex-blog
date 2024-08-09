@@ -1,7 +1,5 @@
 ![tailwind-nextjs-banner](/public/static/images/social-banner.png)
 
-# A big, glaring ERROR!!!!
-
 # An Apex Blog Using Next.js and Tailwind CSS
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/stargazers/)
