@@ -1,11 +1,11 @@
 {
+  "apex": 6,
+  "basics": 3,
+  "triggers": 8,
   "omnistudio": 7,
   "developer": 1,
-  "triggers": 8,
-  "apex": 6,
-  "intro": 7,
   "flexcards": 2,
+  "intro": 7,
   "how-to": 1,
-  "basics": 3,
   "hello": 1
 }
