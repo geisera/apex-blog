@@ -9,11 +9,11 @@ export default function Example() {
             </h1>
             <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
               <ul>
-                <li>- and Apex</li>
-                <li>- and Lightning Web Components</li>
-                <li>- and Javascript</li>
-                <li>- and Flows</li>
-                <li>- and SOQL</li>
+                <li>- Apex</li>
+                <li>- Lightning Web Components</li>
+                <li>- Javascript</li>
+                <li>- Flows</li>
+                <li>- SOQL</li>
                 <li>- and everything else!</li>
               </ul>
             </p>
