@@ -112,8 +112,8 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               <div className="pb-6 pt-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(path)} rel="nofollow">
                   Discuss on Twitter
-                {/* </Link>
-                {` • `}
+                </Link>
+                {/* {` • `}
                 <Link href={editUrl(filePath)}>View on GitHub</Link> */}
               </div>
               {siteMetadata.comments && (

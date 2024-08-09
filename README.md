@@ -1,6 +1,6 @@
 ![tailwind-nextjs-banner](/public/static/images/social-banner.png)
 
-# Tailwind Nextjs Starter Blog
+# An Apex Blog Using Next.js and Tailwind CSS
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/stargazers/)
 [![GitHub forks](https://img.shields.io/github/forks/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/network/)
@@ -14,6 +14,8 @@ This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com
 Probably the most feature-rich Next.js markdown blogging template out there. Easily configurable and customizable. Perfect as a replacement to existing Jekyll and Hugo individual blogs.
 
 Check out the documentation below to get started.
+
+# A big, glaring error!!!
 
 Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-starter-blog/wiki) and do a search on past issues. Feel free to open a new issue if none has been posted previously.
 
@@ -311,3 +313,5 @@ Edit the file: `\data\siteMetadata.js`
 ### Change avatar
 
 Title your profile pic, `avatar.png` and upload to `\public\static\images`
+
+# A big, glaring error!!

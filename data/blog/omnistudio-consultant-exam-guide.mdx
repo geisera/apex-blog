@@ -1,0 +1,213 @@
+---
+title: Tony's Guide to the Salesforce Certified OmniStudio Consultant Exam
+date: '2024-06-13'
+tags: ['omnistudio']
+draft: true
+summary: Awesome summary.
+---
+
+## About the Exam
+
+- **Exam Code of Conduct:** Don't cheat!
+- **Content:** 60 multiple-choice/multiple-select questions and up to five unscored questions\*
+- **Time allotted:** 105 minutes
+- **Passing score:** 63%
+- **Registration fee:** $200, plus taxes
+- **Retake fee:** $100, plus taxes
+- **Delivery options:** Proctored exam delivered onsite at a testing center or in an online proctored environment.
+- **References:** No hard-copy or online materials may be referenced during the exam.
+- **Prerequisite:** None
+
+_Please note that as of November 16, 2017, some Salesforce certification exams may contain five additional, randomly placed, unscored questions to gather data on question performance. The duration of each exam has been evaluated and adjusted to accommodate the inclusion of the unscored questions. These five questions will be in addition to the 60 scored questions on your exam, and will have no impact whatsoever on your score._
+
+### Training Resources
+
+Salesforce recommends a combination of experience, training course completion, Trailhead trails, and self-study.
+
+Salesforce Trailhead can be accessed [here](https://trailhead.salesforce.com/).
+
+The self-study materials recommended for this exam include:
+
+- **[Preparation Trailmix](https://trailhead.salesforce.com/users/strailhead/trailmixes/prepare-for-your-salesforce-omni-studio-consultant-credential)**
+- **[OmniStudio Documentation](https://help.salesforce.com/s/articleView?id=sf.os_omnistudio.htm&type=5)**
+- **[OmniStudio for VLocity Documentation](https://help.salesforce.com/s/articleView?id=sf.os_omnistudio_for_vlocity.htm&type=5)**
+- **[Business Rules Engine Documentation](https://help.salesforce.com/s/articleView?id=sf.business_rules_engine.htm&type=5)**
+- **Design and Administer an OmniStudio Solution (OMS335)**
+
+### Exam Outline
+
+The Salesforce OmniStudio Consultant Exam measures a candidate’s knowledge and skills related to the following objectives.
+
+#### FlexCards: 23%
+
+- Explain the capabilities, use cases, and purpose of using FlexCards.
+- Design Flex Cards to ensure they meet customer requirements/needs.
+- Collect and group the Customer 360 Information required to show to an end user (Console, FlexCards).
+
+#### OmniScript: 27%
+
+- Explain the basic structure of an OmniScript.
+- Validate developed OmniScript processes to ensure client expectation alignment.
+- Identify business process step requirements and map them to OmniScript Components required to implement them.
+
+#### Data Tools: 23%
+
+- Explain the purpose and benefits of Integration Procedures and DataRaptors.
+- Design Integration Procedures and related DataRaptors.
+- Describe the benefits of using Decision Matrices and Expression Sets and provide real examples.
+
+#### Best Fit Solutioning: 27%
+
+- Gather, analyze, and simplify business requirements in order to design solutions using OmniStudio tools following best practices.
+- Map process requirements to OmniStudio capabilities and explain the interaction between them.
+- Create fit/gap analyses between requirements and OmniStudio capabilities.
+
+## What to know
+
+### FlexCards
+
+#### Key Capabilities of FlexCards
+
+- FlexCards summarize contextual information at a glance.
+- FlexCards are the beginning and ending points for customer transactions.
+- FlexCards are viewable on any device or channel.
+- FlexCards can display data from multiple data sources.
+- FlexCards are built quickly using drag-and-drop elements.
+- FlexCards have a what-you-see-is-what-you-get (WYSIWYG) editor for controlling their layout and style.
+- FlexCard actions are relevant to the context of the card.
+- FlexCards are embeddable in other FlexCards.
+- FlexCards are embeddable inside an LWC OmniScript.
+- FlexCards can display more detail on demand with flyouts.
+- FlexCards have multiple states that display based on conditions.
+
+#### FlexCards Features
+
+#### Flyouts
+
+Flyouts in OmniStudio FlexCards are a feature that allows you to create interactive and detailed user experiences within a card-based layout. Here’s a brief overview:
+
+- **Flyouts** are expandable panels or overlays that appear when a user interacts with a specific part of a FlexCard, typically through a button or a link.
+- They provide additional details or actions without navigating away from the current view, keeping the user context intact.
+- **Flyouts are an excellent tool for relieving cluttered interfaces in OmniStudio FlexCards.**
+- **Interactive Expansion**: Flyouts can be triggered by user actions.
+- **Embedded Content**: Flyouts can contain various types of data fields, forms, or even other FlexCards.
+- **Contextual Information**: The data shown in a flyout should be related to the context of the element it expands from. For example, clicking a customer’s name in a FlexCard might open a flyout with detailed customer information.
+- **Reusability and Configurability**: Flyouts can be reused across different FlexCards.
+- **Performance Optimization**: Flyouts optimize performance by loading content only when needed, reducing the initial load time.
+
+#### Use Cases:
+
+- **Detailed Views**: Providing a quick view of detailed information about a specific item without cluttering the main card interface.
+- **Interactive Actions**: Allowing users to perform actions like editing or interacting with data directly from the flyout.
+- **Guided Navigation**: Offering step-by-step guidance or additional information in a compact and accessible way.
+
+#### The Responsive Feature:
+
+The Responsive feature in OmniStudio FlexCards is designed to ensure that the FlexCards adapt smoothly to various screen sizes and device types. Benefits include:
+
+- **Automatic Layout Adjustment**: The Responsive feature automatically adjusts the layout of FlexCards based on the screen size and orientation. This means that the content and components within a FlexCard will reorganize themselves to fit appropriately on the available screen real estate.
+- **Flexible Component Display**: It allows for different components within the FlexCard to be shown or hidden depending on the device size. For example, certain elements may be displayed on a desktop but hidden or condensed on a mobile view to save space and enhance readability.
+- **Dynamic Resizing**: Components within FlexCards resize dynamically to maintain the integrity of the layout. Text, images, buttons, and other elements scale proportionally to ensure they remain accessible and functional on smaller screens.
+- **Breakpoints and Rules**: Developers can define breakpoints and specific rules for how FlexCards should behave at various screen sizes. These breakpoints determine at which widths the layout changes occur, allowing for a customized responsive design.
+- **Collapsible Sections**: Responsive FlexCards can include collapsible sections that expand or contract based on user interaction and screen size, helping to manage content density and maintain a clean interface.
+- **Orientation Handling**: The feature also handles changes in device orientation (portrait vs. landscape), ensuring that FlexCards are always presented in an optimal layout regardless of how the device is held.
+- **Improved User Experience**: By adapting to different devices and screen sizes, the Responsive feature ensures that users have a consistent and pleasant experience, whether they are on a large desktop monitor or a small smartphone screen.
+- **Accessibility and Usability**: Responsive design enhances accessibility, making it easier for users to interact with FlexCards without excessive zooming or scrolling. This is particularly important for users with visual impairments or those using touch interfaces.
+- **Enhanced Readability**: The automatic adjustment of text and component sizes ensures that content remains legible and clear across various devices, reducing the cognitive load on users.
+- **Efficient Use of Screen Space**: By dynamically adjusting layouts, the Responsive feature makes the best use of available screen space, ensuring that important information is always visible and easy to access.
+- **Consistency Across Platforms**: It provides a seamless experience across different platforms, which is essential for applications that are used in diverse environments or by users who switch between devices.
+- **Reduced Development Effort**: Developers can design a single FlexCard that automatically adjusts to multiple screen sizes, reducing the need for separate designs and simplifying the development process.
+
+#### Examples of Responsive FlexCard Usage:
+
+- **360 Degree FlexCard Views**: Detailed customer information that is accessible on both desktop and mobile devices, with streamlined views for smaller screens.
+- **E-commerce Product Listings**: Displaying product cards that adapt to different screen sizes, showing fewer items per row on mobile devices and more on larger screens.
+- **Financial Data Summaries**: Presenting financial dashboards that remain legible and easy to navigate across various devices, with critical metrics always prominently displayed.
+  Integration Procedures in OmniStudio (formerly known as Vlocity) are a vital tool for Salesforce developers working with complex data requirements and external system integrations. Here’s a comprehensive overview:
+
+### Integration Procedures
+
+Integration Procedures are server-side processes that execute multiple actions in a single call. They are used to retrieve, transform, and save data, often across multiple Salesforce and external systems. This makes them powerful for handling complex, multi-step operations that would otherwise require several API calls or data transformations.
+
+#### Key Features and Benefits:
+
+1. **Declarative Configuration**:
+
+   - Integration Procedures are built using a point-and-click interface, allowing developers to configure integrations without extensive coding. This simplifies development and maintenance.
+
+2. **Efficient Data Handling**:
+
+   - They support complex data operations like looping, conditional logic, and data manipulation, reducing the need for extensive Apex code.
+
+3. **Optimized Performance**:
+
+   - Integration Procedures are designed to minimize the number of API calls and improve performance by processing data on the server side. They can fetch and manipulate large datasets more efficiently than client-side solutions.
+
+4. **Reusability and Modularity**:
+
+   - These procedures can be reused across different parts of an application or even across different projects. They can be modular, with components that can be reused in multiple integration scenarios.
+
+5. **Error Handling and Debugging**:
+
+   - They include built-in error handling and debugging tools that help developers quickly identify and resolve issues.
+
+6. **Seamless Integration with OmniStudio Components**:
+   - Integration Procedures are tightly integrated with other OmniStudio components like DataRaptors, OmniScripts, and FlexCards, providing a cohesive ecosystem for managing data and processes.
+
+#### How Integration Procedures Work:
+
+1. **Defining Steps**:
+
+   - Each Integration Procedure consists of steps that define specific actions to be performed. These actions can include data extraction, transformation, and saving operations, or calling external APIs.
+
+2. **Action Types**:
+
+   - Integration Procedures support various action types, including:
+     - **HTTP Actions**: To call external web services.
+     - **DataRaptor Extract and Transform**: To retrieve and manipulate Salesforce data.
+     - **DataRaptor Load**: To save data back into Salesforce.
+     - **Matrix Actions**: For decision logic and complex rule evaluations.
+     - **Loop and Conditional Actions**: To handle iterative processes and conditional flows.
+
+3. **Conditional Execution**:
+
+   - Steps within an Integration Procedure can have conditions based on the data they process, allowing for dynamic execution paths and flexible workflows.
+
+4. **Chaining and Nesting**:
+
+   - Integration Procedures can call other Integration Procedures or even be called from OmniScripts, allowing for complex, multi-layered processes to be constructed in a modular fashion.
+
+5. **Data Mapping and Transformation**:
+   - Developers can define data mappings and transformations directly within Integration Procedures, enabling seamless data flow between different systems and formats.
+
+#### Use Cases for Integration Procedures:
+
+1. **Complex Data Aggregation**:
+
+   - When data needs to be gathered from multiple sources (both internal and external) and combined into a single response, Integration Procedures provide an efficient way to handle this aggregation.
+
+2. **Multi-step Transactions**:
+
+   - For processes that involve multiple sequential actions, such as retrieving data, performing calculations, and updating records, Integration Procedures streamline these operations into a single, efficient process.
+
+3. **External System Integrations**:
+
+   - Integration Procedures are ideal for integrating Salesforce with other enterprise systems like ERPs, CRMs, or custom applications, especially when multiple data exchanges or transformations are required.
+
+4. **Batch Processing**:
+   - When handling large volumes of data that need to be processed in batches, Integration Procedures can manage these operations more effectively than client-side processes.
+
+#### Example Scenario:
+
+Consider a scenario where a customer service application needs to fetch customer details from Salesforce, validate the data against an external credit rating service, and then update the customer's profile with the credit score. An Integration Procedure can orchestrate these steps as follows:
+
+1. **Extract Customer Data**: Use a DataRaptor Extract action to fetch customer details.
+2. **Call External Service**: Use an HTTP Action to send the customer details to the credit rating service and retrieve the score.
+3. **Transform Data**: Use data transformation steps to align the credit score format with Salesforce requirements.
+4. **Update Salesforce**: Use a DataRaptor Load action to save the credit score back into the customer's profile.
+
+#### Conclusion:
+
+Integration Procedures in OmniStudio are a powerful, declarative tool for managing complex data integrations and transformations. By leveraging their capabilities, Salesforce developers can create efficient, maintainable, and scalable solutions for integrating Salesforce with various systems and handling intricate data operations.
+
+These procedures enhance the ability to manage and streamline complex business processes, making them indispensable for robust Salesforce development.

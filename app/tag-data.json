@@ -1,1 +1,11 @@
-{ "apex": 3, "basics": 3 }
+{
+  "apex": 6,
+  "basics": 3,
+  "triggers": 8,
+  "omnistudio": 7,
+  "developer": 1,
+  "flexcards": 2,
+  "intro": 7,
+  "how-to": 1,
+  "hello": 1
+}
