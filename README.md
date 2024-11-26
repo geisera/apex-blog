@@ -1,6 +1,7 @@
-![tailwind-nextjs-banner](/public/static/images/twitter-card.png)
+![tailwind-nextjs-banner](/public/static/images/social-banner.png)
 
-# Tailwind Nextjs Starter Blog
+# An Apex Blog Using Next.js and Tailwind CSS
+## Edit to readme from README-BRANCH
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/stargazers/)
 [![GitHub forks](https://img.shields.io/github/forks/timlrx/tailwind-nextjs-starter-blog?style=social)](https://GitHub.com/timlrx/tailwind-nextjs-starter-blog/network/)
@@ -13,7 +14,9 @@ Check out the documentation below to get started.
 
 Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-starter-blog/wiki) and do a search on past issues. Feel free to open a new issue if none has been posted previously.
 
+<<<<<<< HEAD
 Feature request? Check the past discussions to see if it has been brought up previously. Otherwise, feel free to start a new discussion thread. All ideas are welcomed!
+=======
 
 ## Motivation
 
@@ -222,3 +225,5 @@ Edit the file: `\data\siteMetadata.js`
 ### Change avatar
 
 Title your profile pic, `avatar.png` and upload to `\public\static\images`
+
+# A big, glaring error!!
