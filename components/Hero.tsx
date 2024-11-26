@@ -18,7 +18,7 @@ export default function Example() {
               </ul>
             </p> */}
           </div>
-          <div className="mt-20 sm:block md:mx-auto md:max-w-2xl lg:mx-0 lg:mt-0 lg:w-screen">
+          <div className="mt-20 sm:mt-24 md:mx-auto md:max-w-2xl lg:mx-0 lg:mt-0 lg:w-screen">
             <div className="shadow-lg md:rounded-3xl">
               <div className="bg-indigo-500 [clip-path:inset(0)] md:[clip-path:inset(0_round_theme(borderRadius.3xl))]">
                 <div
