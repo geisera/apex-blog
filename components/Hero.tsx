@@ -5,9 +5,9 @@ export default function Example() {
         <div className="mx-auto max-w-7xl pb-24 pt-10 sm:pb-32 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:py-10">
           <div className="px-6 lg:px-0 lg:pt-4">
             <h1 className="py-5 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-              For Salesforce Devlopers
+              For Salesforce Developers
             </h1>
-            <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+            {/* <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
               <ul>
                 <li> Apex</li>
                 <li> Lightning Web Components</li>
@@ -16,7 +16,7 @@ export default function Example() {
                 <li> SOQL</li>
                 <li> and everything else!</li>
               </ul>
-            </p>
+            </p> */}
           </div>
           <div className="mt-20 sm:mt-24 md:mx-auto md:max-w-2xl lg:mx-0 lg:mt-0 lg:w-screen">
             <div className="shadow-lg md:rounded-3xl">
