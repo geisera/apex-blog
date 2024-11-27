@@ -42,9 +42,13 @@ Use existing data JSON in an element property by indicating the use of a merge f
 3. Preview the Omniscript to ensure the Merge field works correctly.
 ![step 3](/static/images/merge-field-3.png)
 
-## Merge Field Syntax for Nested JSON
+## Merge Field Syntax for Nested JSON Data
+
 | JSON Node                                     | Merge Field Syntax Example
 |-----------------------------------------------|---------------------------
-| `"ContactInfo": { "FirstName": "John" }`      | Use a colon symbol `:` to access a nested JSON node.  `%ContactInfo:FirstName%`                       |
+| ```JSON
+"ContactInfo": { "FirstName": "John" }
+```      | Use a colon symbol `:` to access a nested JSON node.  `%ContactInfo:FirstName%`                       |
 | `"ParentObject": { "NumberMap": [ 1, 2, 3 ] }`| Use a colon symbol `:` to access nested JSON nodes and a pipe symbol ` `%ParentObject:NumberMap|3%`                    |
 | `"ContactInfoStep": { "ContactInfoBlock": [ { "FirstName": "John" }, { "FirstName": "Adam" }, { "FirstName": "Steve" } ] }` | When a formula exists within a repeatable block, use `|n` to access the node in which the formula exists. Depending upon which node the formula exists in, it will return the correlating value. For more information, see Access to Data Within and Outside a Repeatable Block. `%ContactInfoStep:ContactInfoBlock|n:FirstName%` |
+
