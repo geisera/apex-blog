@@ -54,7 +54,7 @@ To access the `FirstName` node in this JSON sample, use a colon symbol `:` to ac
 ```JSON
 "ParentObject": { "NumberMap": [ 1, 2, 3 ] }
 ```
-To access the number 2 in the `NumberMap` array in this JSON sample, use a colon symbol `:` to access nested JSON nodes and a pipe symbol ` `%ParentObject:NumberMap|2%
+To access the number 2 in the `NumberMap` array in this JSON sample, use a colon symbol `:` to access nested JSON nodes and a pipe symbol. *`%ParentObject:NumberMap|2%`*
 
 ### Example 3
 ```JSON
@@ -62,4 +62,4 @@ To access the number 2 in the `NumberMap` array in this JSON sample, use a colon
 ```
 When a formula exists within a repeatable block, use |n to access the node in which the formula exists. Depending upon which node the formula exists in, it will return the correlating value. For more information, see Access to Data Within and Outside a Repeatable Block.
 
-`%ContactInfoStep:ContactInfoBlock|n:FirstName%`
+*`%ContactInfoStep:ContactInfoBlock|n:FirstName%`*
