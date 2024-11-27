@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'ForceDevNotes',
   author: 'Tony Geiser',
   headerTitle: 'ForceDevNotes',
-  description: "A developer's guide to OmniScripts, FlexCards, Integration Procedures, Data Mappers, LWC, and Apex for Salesforce.",
+  description: "A developer's guide to OmniScripts, FlexCards, Integration Procedures, Data Mappers, Lightning Web Components, and Apex for Salesforce.",
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://ForceDevNotes.com',
