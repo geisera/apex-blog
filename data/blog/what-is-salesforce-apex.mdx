@@ -1,0 +1,57 @@
+---
+title: What is Salesforce Apex?
+date: '2024/05/01'
+tags: ['apex', 'basics']
+draft: false
+summary: Understanding the backend, business logic engine of Salesforce!
+---
+
+**Salesforce Apex** is the backend, business logic engine of Salesforce.
+
+It is a strongly typed, object-oriented programming language designed for developing applications and functionalities within the **Salesforce platform**.
+
+Similar to Java, tt allows developers to write custom business logic that runs on Salesforce servers.
+
+### **Key Features of Apex**
+1. **Object-Oriented**: Apex uses classes, objects, and inheritance, similar to Java or C#.
+2. **Strongly Typed**: Variables and method return types are explicitly defined.
+3. **Cloud-Based**: Apex code runs on Salesforce’s multi-tenant, on-demand cloud infrastructure.
+4. **Tightly Integrated with Salesforce**: Apex provides built-in support for Salesforce objects (like Account, Contact, Lead, etc.) and platform events.
+5. **Database Integration**: Developers can execute SOQL (Salesforce Object Query Language) and DML (Data Manipulation Language) statements directly in Apex.
+6. **Governor Limits**: Salesforce imposes limits (like CPU time, heap size, and SOQL query limits) to ensure fair use of resources in the multi-tenant environment.
+7. **Bulk Processing**: Apex supports bulk data processing with batch jobs, making it ideal for working with large datasets.
+
+---
+
+### **When to Use Apex**
+1. **Custom Business Logic**: Create triggers and workflows to automate business processes.
+2. **Custom APIs**: Expose Salesforce functionality to external applications using REST/SOAP web services.
+3. **Batch Processing**: Handle large data sets efficiently using batch jobs or scheduled jobs.
+4. **Custom Controllers for Visualforce or Lightning Components**: Build dynamic, interactive user interfaces for Salesforce users.
+
+---
+
+### **Examples of Apex Usage**
+1. **Triggers**: Automatically update a related record when a change occurs.
+2. **Batch Jobs**: Process thousands of records asynchronously, ideal for large data updates.
+3. **Custom Web Services**: Build endpoints for external apps to interact with Salesforce.
+4. **Custom Validations**: Write custom logic to validate inputs beyond standard validation rules.
+
+---
+
+### **Simple Apex Trigger Example**
+```apex
+trigger AccountTrigger on Account (before insert, before update) {
+    for(Account acc : Trigger.new) {
+        if(acc.Industry == 'Technology') {
+            acc.Description = 'This is a tech company.';
+        }
+    }
+}
+```
+This trigger updates the `Description` field for Accounts that are part of the **Technology** industry.
+
+---
+
+### **Learn More**
+As always, please refer to the official Salesforce documentation **_[here](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_intro_what_is_apex.htm)_**.
