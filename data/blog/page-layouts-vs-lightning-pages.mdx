@@ -1,0 +1,91 @@
+---
+title: When to Use Page Layouts vs. Lightning Pages
+date: '2024/12/19'
+tags: ['page layouts', 'lightning pages', 'customization']
+draft: false
+summary: Customize your Salesforce UI for the best user experience.
+---
+
+## When Should I Use Page Layouts vs. Lightning Pages in Salesforce?
+
+While both are designed to control the way users interact with records, they serve different purposes and offer varying levels of flexibility. Here’s a comprehensive guide to help you determine when to use Page Layouts versus Lightning Record Pages.
+
+### **The Bottomline**
+
+Choosing between **Page Layouts** and **Lightning Record Pages** depends on the complexity and interactivity of your Salesforce UI needs.
+
+For simple, profile-based field management, **Page Layouts** are good enough. But for a modern, dynamic, and user-specific experience, **Lightning Record Pages** are essential. 
+
+### **Page Layouts: The Foundation of UI Customization**
+
+**Purpose:** Page Layouts organize the content and structure of record detail and edit pages. They define which fields, sections, buttons, and related lists are displayed to users.
+
+**Key Features:**
+- **Field Control**: Arrange and group fields logically within sections.
+- **Field Properties**: Set fields as "Required" or "Read-Only."
+- **Related Lists**: Display related lists and associated data.
+- **Actions and Buttons**: Configure which quick actions and buttons are available.
+- **Profile-Based Customization**: Assign layouts by user profile and record type, allowing for basic customization per user group.
+
+**Limitations:**
+- **Static Layout**: All users within a profile see the same layout, with limited flexibility for customization.
+- **No Component Control**: Cannot add custom components, such as dashboards or Lightning Web Components (LWCs), directly into the layout.
+- **Limited Visibility Rules**: No support for dynamic visibility; all elements are visible to all users assigned to a particular layout.
+
+**When to Use Page Layouts:**
+- When you need to provide a simple, consistent experience for users within the same role or profile.
+- To control the visibility, required status, and read-only status of individual fields.
+- When managing the layout for detail and edit views of records in both **Salesforce Classic** and **Lightning Experience**.
+
+### **Lightning Record Pages: The Dynamic, Modern Approach**
+
+**Purpose:** Lightning Record Pages offer a more advanced, flexible approach to customizing record pages. Built using the **Lightning App Builder**, they allow for greater control of the page layout and design.
+
+**Key Features:**
+- **Dynamic Customization**: Use **Dynamic Forms** to control the visibility and organization of fields at the individual component level.
+- **Component-Based Design**: Add components such as related lists, dashboards, charts, and even custom **Lightning Web Components (LWCs)**.
+- **Multi-Column Layouts**: Create pages with up to three columns for more efficient use of screen space.
+- **Dynamic Visibility**: Control component visibility based on user profile, app, record type, or device type, offering tailored user experiences.
+- **Rich Components**: Include sub-tabs, rich text, and visual components to enhance the user experience.
+- **Mobile-Ready**: Ensure mobile responsiveness for an optimized experience on any device.
+
+**Advantages Over Page Layouts:**
+- **Enhanced Flexibility**: Adjust page structure without requiring multiple layouts for different profiles.
+- **Dynamic Experience**: Show or hide components dynamically based on user criteria.
+- **Personalized User Experience**: Tailor the interface for different apps, record types, and profiles.
+
+**When to Use Lightning Record Pages:**
+- When you want to create a tailored, dynamic experience for users with different roles or profiles.
+- To introduce components like **dashboards**, **related lists**, and **Lightning Web Components (LWCs)**.
+- When using **Dynamic Forms** to organize and control field visibility based on record values or user criteria.
+- When you want to support custom app-specific pages that vary across apps, profiles, and devices.
+
+### **Page Layouts vs. Lightning Record Pages: Key Differences**
+
+| **Feature**             | **Page Layouts**                       | **Lightning Record Pages**                  |
+|------------------------|----------------------------------------|--------------------------------------------|
+| **Customization**       | Control fields, sections, and buttons  | Full page customization with components    |
+| **Dynamic Visibility**  | No                                    | Yes, based on user, app, or record type    |
+| **Profile-Specific**    | Yes, via multiple layouts             | Yes, with app and profile assignments     |
+| **Field Control**       | Yes (Required, Read-Only)             | Yes, with **Dynamic Forms**               |
+| **Component Support**   | No                                    | Yes, supports **LWC, dashboards, etc.**  |
+| **Multi-Column Layout** | No                                    | Yes, up to 3 columns                      |
+| **Mobile-Responsive**   | Limited                               | Yes, fully mobile responsive             |
+
+### **When to Choose Page Layouts vs. Lightning Record Pages**
+
+| **Scenario**                      | **Use Page Layouts** | **Use Lightning Record Pages** |
+|-----------------------------------|---------------------|--------------------------------|
+| **Simple, role-based customization** | ✅                  | ❌                             |
+| **Field-level visibility (Required/Read-Only)** | ✅          | ✅                             |
+| **Dynamic component visibility**   | ❌                   | ✅                             |
+| **Custom components (LWCs, charts, dashboards)** | ❌       | ✅                             |
+| **Different layouts for different record types** | ✅         | ✅                             |
+| **Responsive design for mobile users** | ❌             | ✅                             |
+
+### **Best Practices**
+1. **Use Page Layouts for Simplicity:** When your customization needs are minimal and the same interface works for most users, Page Layouts are sufficient.
+2. **Leverage Lightning Record Pages for Dynamic Needs:** If you need a modern, interactive, and responsive interface with personalized user experiences, Lightning Record Pages are the better choice.
+3. **Combine Both Tools:** In most cases, you will need to use both Page Layouts and Lightning Record Pages in conjunction. Use Page Layouts to control field visibility and required status, and Lightning Record Pages to manage the full-page layout and add components.
+4. **Minimize Complexity:** Avoid creating multiple Page Layouts if a **Dynamic Form** on a **Lightning Record Page** can achieve the same goal. This will reduce administrative overhead.
+5. **Stay Flexible:** Revisit your page designs periodically, especially after **Salesforce releases new features**. New functionality, such as enhancements to **Dynamic Forms** and **App Builder components**, can simplify your setup.
