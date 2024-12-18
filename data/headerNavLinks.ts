@@ -1,6 +1,6 @@
 const headerNavLinks = [
   { href: '/ ', title: 'Home' },
-  { href: 'https://ForceDevNotes.substack.com/', title: 'Newsletter' },
+  // { href: 'https://ForceDevNotes.substack.com/', title: 'Newsletter' },
   { href: '/blog', title: 'Latest' },
   { href: '/tags', title: 'Tags' },
   // { href: '/projects', title: 'Projects' },
