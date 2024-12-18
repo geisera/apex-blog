@@ -2,6 +2,8 @@ import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
 import { Space_Grotesk } from 'next/font/google'
+import { Play } from 'next/font/google'
+import { Michroma } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
@@ -15,6 +17,20 @@ const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-grotesk',
+})
+
+const play = Play({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-play',
+  weight: '400',
+})
+
+const michroma = Michroma({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-michroma',
+  weight: '400',
 })
 
 export const metadata: Metadata = {
@@ -62,6 +78,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang={siteMetadata.language}
       className={`${space_grotesk.variable} scroll-smooth`}
+      // className={`${play.variable} scroll-smooth`}
+      //className={`${michroma.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />

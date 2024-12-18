@@ -23,6 +23,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+        //sans: ['var(--font-play)', ...fontFamily.sans],
+        // sans: ['var(--font-michroma)', ...fontFamily.sans],
       },
       colors: {
         primary: colors.blue,
