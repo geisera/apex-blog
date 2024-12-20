@@ -1,0 +1,52 @@
+---
+title: Quick Notes on Salesforce Winter and Spring '25 Release
+date: '2024-12-21'
+tags: ['salesforce', 'winter release']
+draft: false
+summary: What's new and exciting for Salesforce Spring '25! And what you need to do.
+---
+The Salesforce Spring '25 release is set to introduce several enhancements designed to improve user experience, security, and system performance. To help you prepare effectively, here's a concise overview of the most impactful updates and recommended preparation steps:
+
+## **Key Updates and Enhancements:**
+
+### **Change Einstein Activity Capture Permissions for Sales Engagement Basic Users:**
+   - **Impact:** Users assigned the Sales Engagement Basic User permission set will lose access to Einstein Activity Capture unless reassigned the Standard Einstein Activity Capture permission set.
+   - **Preparation:** Identify affected users and update their permission sets accordingly. 
+
+### **Enable ICU Locale Formats:**
+   - **Impact:** Salesforce is transitioning from Oracle’s Java Development Kit (JDK) to ICU Locale Formats, affecting date, time, and number formatting.
+   - **Preparation:** Test the new formats in a sandbox environment to identify potential impacts on your processes. 
+
+### **Enable LWC Stacked Modals:**
+   - **Impact:** To enhance page load performance, Salesforce is converting more of the user interface from legacy Aura components to Lightning Web Components (LWC).
+   - **Preparation:** Review and test any custom quick actions built with Aura or LWC to ensure compatibility. 
+
+### **Enforce Permission Requirements Defined on Built-In Apex Classes Used as Inputs:**
+   - **Impact:** When using an Apex action in a Flow, users will need to have access to the underlying records being affected if the Apex action is defined to enforce user permissions.
+   - **Preparation:** Review your Flows and Apex actions to ensure appropriate user permissions are in place. 
+
+### **Enforce Rollbacks for Apex Action Exceptions in REST API:**
+   - **Impact:** Apex actions run via the REST API will now roll back if they encounter exceptions, ensuring consistent database changes.
+   - **Preparation:** Test your integrations to confirm they handle exceptions appropriately under the new rollback behavior. 
+
+**Preparation Timeline:**
+
+- **December 19, 2024:** Sign up for a pre-release Developer Edition environment to explore Spring '25 features. 
+
+- **December 31, 2024:** Review the official Salesforce Release Notes for detailed information on all updates. 
+
+- **January 2, 2025 (by 5 p.m. PT):** Refresh your sandbox to test new features against your customizations. 
+
+- **January 3, 2025:** Sandbox Preview begins; utilize this period for thorough testing. 
+
+- **January 16, 2025:** Salesforce will share features in the Admin Evangelist’s Release Blog, highlighting top features to be release-ready. 
+
+**General Recommendations:**
+
+- **Plan Ahead:** Schedule updates during off-peak hours to minimize disruption.
+
+- **Communicate Changes:** Inform users about upcoming changes and provide necessary training or documentation.
+
+- **Backup Configurations:** Document current settings to facilitate troubleshooting if needed.
+
+### Here's hoping you all have a wonderful 2025!
