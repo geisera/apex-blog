@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { genPageMetadata } from 'app/seo'
 
 export const metadata = genPageMetadata({ title: 'Projects' })
@@ -55,9 +56,7 @@ export default function Terms() {
             <li>Attempt to gain unauthorized access to the Website’s systems or servers.</li>
           </ul>
 
-          <h2 className="mt-6 text-2xl font-semibold">
-            4. Comments and User-Generated Content
-          </h2>
+          <h2 className="mt-6 text-2xl font-semibold">4. Comments and User-Generated Content</h2>
           <p className="mt-2">
             The Website may allow you to post comments or user-generated content. You are solely
             responsible for the content you post, and by posting such content, you grant
@@ -92,7 +91,8 @@ export default function Terms() {
 
           <h2 className="mt-6 text-2xl font-semibold">8. Privacy Policy</h2>
           <p className="mt-2">
-            Your use of the Website is also governed by our Privacy Policy, which outlines how we collect, use, and protect your personal information.
+            Your use of the Website is also governed by our Privacy Policy, which outlines how we
+            collect, use, and protect your personal information.
           </p>
 
           <h2 className="mt-6 text-2xl font-semibold">9. Modifications to Terms</h2>
