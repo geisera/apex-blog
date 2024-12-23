@@ -215,5 +215,3 @@ Edit the file: `\data\siteMetadata.js`
 ### Change avatar
 
 Title your profile pic, `avatar.png` and upload to `\public\static\images`
-
-# A big, glaring error!!
