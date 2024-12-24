@@ -88,7 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${tomorrow.variable} scroll-smooth`}
       // className={`${space_grotesk.variable} scroll-smooth`}
       // className={`${play.variable} scroll-smooth`}
-      //className={`${michroma.variable} scroll-smooth`}
+      // className={`${michroma.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
