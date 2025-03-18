@@ -1,0 +1,54 @@
+---
+title: How to Use Multi-Select Elements for Conditional Rendering in Your OmniScript
+date: '2025/03/07'
+tags: ['omnistudio', 'omniscripts']
+draft: false
+summary: You need to understand formula elements and the CONTAINS method
+---
+
+In Salesforce OmniStudio, developers often need to conditionally render elements based on user selections in multi-select fields within OmniScripts. This functionality enhances user experience by displaying relevant information dynamically. Here's a guide on how to implement conditional rendering using multi-select elements.
+
+**1. Understanding Multi-Select Elements in OmniScripts**
+
+Multi-select elements allow users to choose multiple options from a list. In OmniScripts, you can add these elements to enable such functionality. To incorporate a multi-select element:
+
+- Navigate to your OmniScript in the OmniStudio app.
+- Drag and drop the **Multi-Select** element from the component palette into your script.
+- Configure the options and settings as needed.
+
+![Button Properties](/static/images/multi-select.png)
+
+
+**2. Setting Up Conditional Rendering**
+
+To conditionally display elements based on selections in a multi-select field, follow these steps:
+
+- **Identify the Element to Control**: Determine which element(s) should appear or hide based on the user's selections.
+- **Configure the Conditional View Property**: Use the **Conditional View** property of the target element to set the criteria for its visibility.
+
+For example, if you want an element to display when a specific option is selected in the multi-select field, set the **Conditional View** property accordingly. Salesforce's guide on [Using the Conditional View Property](https://help.salesforce.com/s/articleView?id=sf.os_conditionally_display_elements_using_the_conditional_view_property_19389.htm&language=en_US&type=5) provides detailed instructions.
+
+**3. Considerations and Best Practices**
+
+When implementing conditional rendering with multi-select elements, keep the following in mind:
+
+- **Use of Operators**: The **CONTAINS** operator is essential for checking if a specific value exists within a multi-select field. However, some users have noted the absence of this operator in certain contexts, which can limit functionality. For more details, see this [Salesforce Idea](https://ideas.salesforce.com/s/idea/a0B8W00000PiyiZUAR/add-contains-operator-to-omniscript-conditional-view).
+- **Performance Considerations**: Ensure that complex conditional logic does not adversely affect the performance of your OmniScript. Test thoroughly to maintain a smooth user experience.
+- **User Experience**: Clearly indicate to users which selections will trigger additional fields or actions to avoid confusion.
+
+**4. Additional Resources**
+
+For further learning and community discussions on this topic, consider exploring:
+
+- **Salesforce Trailblazer Community**: Engage with other developers and find solutions to common challenges related to conditional rendering and multi-select elements. Visit the [Conditional Visibility Topic](https://trailhead.salesforce.com/trailblazer-community/topics/conditionalvisibility) for more insights.
+- **Salesforce Stack Exchange**: This platform offers Q&A on various Salesforce development topics, including conditional rendering based on multi-select picklist values. Check out this relevant [discussion](https://salesforce.stackexchange.com/questions/195821/display-a-record-based-on-multi-select-picklist-value).
+
+By following these guidelines and utilizing the available resources, you can effectively implement conditional rendering in OmniScripts using multi-select elements, thereby creating dynamic and responsive user interfaces.
+
+**Sources:**
+
+- [Multi-Select Element in OmniScripts](https://help.salesforce.com/s/articleView?id=sf.os_omniscripts_multi_select_element.htm&language=en_US&type=5)
+- [Using the Conditional View Property](https://help.salesforce.com/s/articleView?id=sf.os_conditionally_display_elements_using_the_conditional_view_property_19389.htm&language=en_US&type=5)
+- [Idea: Add CONTAINS Operator to OmniScript Conditional View](https://ideas.salesforce.com/s/idea/a0B8W00000PiyiZUAR/add-contains-operator-to-omniscript-conditional-view)
+- [Conditional Visibility Discussions](https://trailhead.salesforce.com/trailblazer-community/topics/conditionalvisibility)
+- [Display a Record Based on Multi-Select Picklist Value](https://salesforce.stackexchange.com/questions/195821/display-a-record-based-on-multi-select-picklist-value) 
