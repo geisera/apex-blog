@@ -1,0 +1,159 @@
+---
+title: OmniStudio's New Designer
+date: '2025-06-13'
+tags: ['omnistudio', 'designer']
+draft: false
+summary: Salesforce’s new OmniStudio Designer replaces the older Manage Package Designer with a modern, Flow-like interface. You’ll find faster performance, fewer clicks, and consistent tools across OmniScript, FlexCards, Data Mappers, and Integration Procedures. Here’s what to expect—and how to prepare your org.
+
+---
+
+{/* <TOCInline toc={props.toc} /> */}
+**What’s New in the Standard OmniStudio Designer**
+
+Salesforce’s new OmniStudio Designer (often called the “standard designer”) replaces the older Manage Package Designer with a modern, Flow-like interface. You’ll find faster performance, fewer clicks, and consistent tools across OmniScript, FlexCards, Data Mappers, and Integration Procedures. Here’s what to expect—and how to prepare your org.
+
+---
+
+## 1. Core Improvements
+
+* **Modern UI & UX**
+
+  * Left‐side element palette, right‐side properties, top‐bar actions—just like Flow Designer.
+  * Drag-and-drop is noticeably snappier; tabs activate/deactivate instantly.
+* **List Views**
+
+  * OmniScript, FlexCard, Data Mapper, and Integration Procedure list views mimic Salesforce object lists.
+  * Built-in search and standard list actions speed navigation.
+* **Design Assistant**
+
+  * Contextual warnings and tips appear in a side panel, guiding best practices.
+* **Faster Preview & Activation**
+
+  * Preview JSON and debug logs load quickly.
+  * Activating new versions often takes seconds—not minutes.
+
+---
+
+## 2. Feature Comparisons
+
+### 2.1 OmniScript Builder
+
+* **Old vs. New List View**
+
+  * Clone and trim fields (Name, Type, Subtype, Description, Last Modified) for clarity.
+  * New view supports inline search; old view does not.
+* **Element Activation**
+
+  * Old: toggle “Disabled” in properties.
+  * New: use the list-view toggle icon to gray-out elements.
+* **Properties Access**
+
+  * Old: place element → switch to Properties tab.
+  * New: drop element → edit inline without tab switching.
+* **Global Setup**
+
+  * Old: buried under a Setup tab.
+  * New: click the gear icon for script-level settings.
+* **Canvas Resizing**
+
+  * New: collapse side panels to maximize workspace.
+  * Old: panels have limited collapse.
+
+### 2.2 FlexCard Builder
+
+* Mirror the OmniScript layout: elements left, properties right, actions top.
+* Design Assistant and faster preview/debug mirror OmniScript.
+* Data JSON and Action Debugger panes include search and highlighting.
+
+### 2.3 Data Mapper Designer
+
+* **Extract Tab**
+
+  * Old “Extract Step” → New “Extract Object” with clearer naming.
+  * “Extract Object Path” moved to the top for visibility.
+* **Filter Section**
+
+  * Field, operator, and value labels remain; the UI is tidier.
+* **Mapping Tab**
+
+  * Old “Output” → New “Mapping.”
+  * Quick-match lives under Mapping; add new mappings via a popup window, reducing accidental edits.
+* **Lock & Read-Only Modes**
+
+  * Collapse sections to read-only; edit via pencil icon.
+  * Buttons let you reorder filters or mappings without drag-and-drop only.
+
+### 2.4 Integration Procedure Designer
+
+* **Hybrid Layout**
+
+  * Collapsible containers (like Data Mapper) + element palette (like OmniScript/FlexCard).
+* **Procedure Properties**
+
+  * Global settings moved from inline to a dedicated Properties panel.
+* **Add Elements**
+
+  * Click “Add” to search & insert elements (HTTP, DataRaptor, etc.)—no need to drag from the palette.
+* **Collapsible Summaries**
+
+  * Containers show a summary bar; expand for details.
+* **Tabbed Configuration**
+
+  * Input, output, and failure response each get a separate tab—keeps the page concise.
+* **Enhanced Debugging**
+
+  * Preview shows per-element status, elapsed time, inputs, and outputs for faster troubleshooting.
+
+---
+
+## 3. Known Limitations
+
+1. **DataPack Import/Export**
+
+   * Not supported in standard designer; use Salesforce CLI or toggle back to Manage Package Designer.
+2. **Compatibility**
+
+   * Components edited in standard designer won’t open in Manage Package Designer. Always create new versions when you switch.
+3. **No “Deploy Standard LWC” Button**
+
+   * FlexCard and OmniScript LWC activation must be handled manually; test thoroughly if you embed on Experience Cloud.
+4. **Open Issues**
+
+   * At launch, \~12 known issues affected UI and performance. Check Salesforce’s Known Issues page for “OmniStudio Standard Designer” to decide if you need to disable it until patches arrive.
+
+---
+
+## 4. Migration & Best Practices
+
+1. **Enable Standard Designer by Default**
+
+   * New orgs default to standard designer; Manage Package Designer toggle will disappear by Summer 2026.
+2. **Phased Rollout**
+
+   * **Sandbox Testing:**
+
+     * Disable manage-package, create new versions of every OmniStudio component, activate & test.
+   * **Backup Versions:**
+
+     * If you must switch back, always clone your most recent active version first.
+3. **Manage Package Toggle**
+
+   * Temporarily re-enable Manage Package Designer via **OmniStudio ▶ Settings** to import/export DataPacks.
+4. **Regression Checklist**
+
+   * Validate OmniScripts, FlexCards, Data Mappers, Integration Procedures in both interfaces.
+   * Confirm LWC activation processes.
+   * Log any blockers and check Known Issues or open a support case.
+
+---
+
+## 5. Recap
+
+The new standard OmniStudio Designer offers:
+
+* A unified, Flow-style interface across all components
+* Faster drag-and-drop, previews, and activations
+* Inline editing and design assistance
+* Improved list views and search
+
+Before you flip the switch in production, clone your list views for clarity, test every component in a sandbox, and keep backups of your active versions. By summer 2026, the standard designer becomes the only game in town—so start adapting today!
