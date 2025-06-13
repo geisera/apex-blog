@@ -1,0 +1,81 @@
+---
+title: How to Fix "URLs Needed for LWC, Not Added to Remote Site Settings"
+date: '2025-05-16'
+tags: ['omnistudio', 'LWC', 'error']
+draft: false
+summary: When you first set up an OmniStudio developer org, you may encounter errors indicating that Lightning Web Component (LWC) URLs aren’t trusted. Here's how you fix it for good!
+---
+
+**How to Fix “LWC URLs Not Added to Remote Site Settings” in Your OmniStudio Developer Org**
+
+When you first set up an OmniStudio developer org, you may encounter errors indicating that Lightning Web Component (LWC) URLs aren’t trusted. Salesforce’s **Remote Site Settings** control which external domains your org can call—think of them as a whitelist of “trusted partners.” If your LWC bundle tries to fetch resources from an unlisted domain, Salesforce will block the request, and you’ll see warnings like:
+
+> *“URL needed for LWC not added to Remote Site Settings”*
+
+Follow this simple guide to whitelist the two core domains you need—and get your LWC communications flowing smoothly.
+
+---
+
+## Why Remote Site Settings Matter
+
+Salesforce enforces strict cross-domain security: any callout from Apex or a component to an external URL must first be explicitly allowed. In an OmniStudio context, your LWC bundles (and any hosted static resources) live on Salesforce’s Visualforce and Lightning domains:
+
+* `https://<your-instance>.visualforce.com`
+* `https://<your-instance>.lightning.force.com`
+
+By adding these to **Remote Site Settings**, you grant your org permission to load LWC assets, make JavaScript remoting calls, and access other hosted resources.
+
+---
+
+## Step-by-Step: Whitelisting Your LWC Domains
+
+1. **Copy the Two Required URLs**
+   Prepare your clipboard with both domains. For example:
+
+   ```
+   https://mydevorg.visualforce.com
+   https://mydevorg.lightning.force.com
+   ```
+
+2. **Navigate to Remote Site Settings**
+
+   * In **Setup**, search for **Remote Site Settings** in the Quick Find box.
+   * Click **Remote Site Settings** to open the list.
+
+3. **Edit (or Create) the Visualforce Entry**
+
+   * If you already have an entry pointing to `*.visualforce.com`, click **Edit**.
+   * Otherwise, click **New Remote Site**.
+   * Set **Remote Site Name** to something like `VF_Host`.
+   * In **Remote Site URL**, paste your Visualforce URL from the clipboard.
+   * Click **Save**.
+
+4. **Edit (or Create) the Lightning Entry**
+
+   * Back on the Remote Site Settings list, click **Edit** next to any existing `*.lightning.force.com` entry—or **New Remote Site**.
+   * Name it `Lightning_Host`.
+   * Paste your Lightning URL from the clipboard into **Remote Site URL**.
+   * Click **Save**.
+
+5. **Verify the Warning Is Gone**
+
+   * Return to your OmniStudio app or wherever the warning was appearing.
+   * Refresh the page or re-run the Preview.
+   * The “URL needed for LWC not added” warning should no longer appear.
+
+---
+
+## Tips & Troubleshooting
+
+* **Sandbox vs. Production URLs**
+  Remember that sandboxes use a different domain prefix (e.g., `cs50.visualforce.com`). Update your Remote Site Settings accordingly for each org.
+
+* **Wildcard Domains**
+  If your org uses multiple instances, you can use a wildcard entry like `https://*.visualforce.com`. However, be cautious—broad wildcards may introduce security risk.
+
+* **Check Static Resource Access**
+  If you’re hosting static resources (e.g., CSS or JS libraries) on an external CDN, you must also whitelist those specific domains.
+
+---
+
+By whitelisting both your Visualforce and Lightning domains in Remote Site Settings, you eliminate the common LWC URL error and ensure your OmniStudio components have uninterrupted access to their hosted assets. If this guide helped, happy building—and may your components load lightning-fast!
