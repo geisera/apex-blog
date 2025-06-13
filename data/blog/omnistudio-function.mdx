@@ -1,0 +1,308 @@
+---
+title: Omnistudio Functions anf Formalas
+date: '2025-06-13'
+tags: ['omnistudio', 'functions']
+draft: false
+summary: An overview of OmniStudio Functions.
+---
+
+**Omniscript Functions Overview**
+Use these functions in your Formula or Aggregate elements. For Data Mapper and Integration Procedure functions, see the Function Reference. To add a Formula/Aggregate element, see **Create a Formula or Aggregate in an Omniscript**. For supported operators, see **Supported Formula Operators**.
+
+---
+
+### Basic Math & Conversion
+
+* **ABS(number)**
+
+  ```text
+  ABS(%Friends%) → 6.52534
+  ```
+
+  Returns the absolute value.
+* **ROUND(number, decimals)**
+
+  ```text
+  ROUND(%Friends%, 3) → 6.525
+  ```
+
+  Rounds to *n* decimal places.
+* **POW(base, exponent)**
+
+  ```text
+  POW(%Friends%, 3) → 274.625
+  ```
+
+  Raises base to exponent.
+* **RANDOM()**
+
+  ```text
+  RANDOM() → 0.374
+  ```
+
+  Returns a 0–1 random number.
+* **INTEGER(value)**
+
+  ```text
+  INTEGER("12.5") → 12
+  ```
+
+  Drops decimals (no rounding).
+* **NUMBER(string)**
+
+  ```text
+  NUMBER("128") → 128
+  ```
+
+  Converts text to number.
+* **STRING(value)**
+
+  ```text
+  STRING(6.5) → "6.5"
+  ```
+
+  Converts any value to text.
+* **CURRENCY(value)**
+  Formats numeric value as currency (e.g. `12345` → `12,345.00`).
+* **NULL**
+  Renders a null value.
+
+---
+
+### Logical & Conditional
+
+* **IF(cond, then, else)**
+
+  ```text
+  IF(%reset%="Yes" || %reboot%="Yes", "Closed", "Escalated")
+  ```
+
+  Returns `then` if `cond` is true, else `else`.
+* **AND(cond1, cond2, …)**
+
+  ```text
+  IF(AND(%a%="X", %b%="Y"), …)
+  ```
+
+  True if all conditions are met.
+* **OR(cond1, cond2, …)**
+
+  ```text
+  IF(OR(%a%="X", %b%="Y"), …)
+  ```
+
+  True if any condition is met.
+* **EQUALS(field, value)**
+
+  ```text
+  IF(EQUALS(%Dept%, "401(k)"), …)
+  ```
+
+  Compares field to value.
+* **COUNTIF(array, expr)**
+
+  ```text
+  COUNTIF(%MyArray%, >10)
+  ```
+
+  Counts elements matching `expr`.
+* **SUMIF(array, expr)**
+
+  ```text
+  SUMIF(%MyArray%, >5)
+  ```
+
+  Sums elements matching `expr`.
+* **CASE(value, LOWER | UPPER | TITLE | SENTENCE)**
+
+  ```text
+  CASE(%Name%, UPPER) → "TONY JONES"
+  ```
+
+  Changes text case.
+
+---
+
+### Text Manipulation
+
+* **CONCATENATE(val1, val2, …)**
+
+  ```text
+  CONCATENATE(%FirstName%, " ", %LastName%) → "Tony Jones"
+  ```
+
+  Joins multiple strings.
+* **SUBSTRING(text, start, end)**
+
+  ```text
+  SUBSTRING("Substring!", 3, 9) → "string"
+  ```
+
+  Extracts a portion of text.
+* **CONTAINS(text, value)**
+
+  ```text
+  CONTAINS(%FirstName%, "Tony") → true
+  ```
+
+  Checks if `value` appears in `text`.
+* **SPLIT(text, delimiter, limit)**
+
+  ```text
+  SPLIT("Tony Jones", " ", 2) → ["Tony", "Jones"]
+  ```
+
+  Splits text into an array.
+
+---
+
+### Date & Time
+
+* **TODAY()**
+  Returns today’s date at midnight.
+* **NOW()**
+  Returns current UTC date/time (ms = 0).
+* **DATE(value)**
+
+  ```text
+  DATE(%DOB%) → Wed Jul 19 1978 …
+  ```
+
+  Converts to full JS Date.
+* **YEAR(date) / MONTH(date) / DAYOFMONTH(date)**
+
+  ```text
+  YEAR(TODAY()) → 2025
+  ```
+
+  Extracts parts of a date.
+* **DATEDIFF(date1, date2)**
+
+  ```text
+  DATEDIFF(%DOB%, TODAY()) → 13559
+  ```
+
+  Days between two dates.
+* **AGE(birthdate)**
+
+  ```text
+  AGE(%Birthdate%) → 7
+  ```
+
+  Years from `birthdate` to today.
+* **AGEON(birthdate, futureDate)**
+
+  ```text
+  AGEON(%Birthdate%, "07-09-2024") → 16
+  ```
+
+  Years from `birthdate` to `futureDate`.
+* **DAYOFWEEK(date)**
+  Returns weekday (Mon=1 … Sun=7).
+* **HOUR(date) / MINUTE(date)**
+  Returns hour/minute of given date.
+* **MOMENT(baseDate).add(…, …).subtract(…, …)**
+  Leverage Moment.js for complex date ops (e.g. `.calendar()`).
+
+> **Note:** In Set Values, `TODAY()` may return the previous date. Workaround: use `TODAY() + ""`, or `MOMENT()` / `TIMESTAMP()` instead.
+
+---
+
+### Aggregate Functions (use in repeating blocks)
+
+* **ARRAY(val1, val2, …)** → builds an array
+* **SUM(array)** → total of numeric elements
+* **AVERAGE(array)** → mean of numeric elements
+* **COUNT(array)** → number of elements
+* **MAX(array)** → largest value
+* **MIN(array)** → smallest value
+* **EXISTS(array, value)** → true if any element equals `value`
+
+> **Precision Tip:** To avoid two-decimal default in `SUM`, combine values with `+` inside `ROUND`, e.g.
+>
+> ```text
+> ROUND(4.2165 + 5.5546, 7)
+> ```
+
+**Create a Formula or Aggregate Element in OmniScript**
+
+Use Formula and Aggregate elements to compute values and evaluate data across multiple fields:
+
+1. **Supported Inputs**
+
+   * **Merge fields:** `%Element1%`, `%JSONnode1%`
+   * **Numbers/Integers:** e.g. `5 + 3.145`
+   * **Strings:** e.g. `"ABC" + "DEF"`
+   * **Booleans:** `true`, `false`
+   * **Arrays:** `[1, 2, 3, 4, 5]`
+   * **Dates:** `2/3/24` (interpreted via Day.js; set Data Type to Text to avoid parsing)
+   * **Null**
+
+2. **When to Use Each Element**
+
+   * **Formula:** Any calculation or logical expression. Supports operators and Omniscript Functions.
+   * **Aggregate:** Aggregation over repeating elements (e.g. `SUM`, `AVERAGE`, `COUNT`, `MAX`, `MIN`, `EXISTS`).
+
+3. **Common Examples**
+
+   * **Check if a date is within 30 days:**
+
+     ```text
+     DATEDIFF(%QualifyingEventDate%, TODAY()) <= 30
+     ```
+   * **Contract end date (add 365 days):**
+
+     ```text
+     DATE(
+       YEAR(%DateElement%), 
+       MONTH(%DateElement()), 
+       DAYOFMONTH(%DateElement()) + 365
+     )
+     ```
+   * **One week from today:**
+
+     ```text
+     DATE(
+       YEAR(TODAY()), 
+       MONTH(TODAY()), 
+       DAYOFMONTH(TODAY()) + 7
+     )
+     ```
+
+4. **How to Configure**
+
+   1. Drag a **Formula** or **Aggregate** element onto your script.
+   2. In **Properties ▶ Expression**, click any Omniscript Function to insert it.
+   3. Inside the function, insert merge fields (`%YourElement%`).
+   4. For repeatable blocks, see **Evaluate Elements in Repeatable Blocks**.
+   5. If using a Formula, add operators in the Expression box.
+   6. To hide the element from the UI, select **Hide**.
+   7. Add dependent elements as needed.
+   8. Preview to test.
+
+5. **Supported Operators**
+
+   ```
+   +, –, *, /, ^, =, <>, >, <, >=, <=, && (AND), || (OR), ( )
+   ```
+
+6. **Key Omniscript Functions**
+
+   * **ABS(number)** → absolute value
+   * **ROUND(number, decimals)** → round to specified places
+   * **INTEGER(value)** → drop decimals
+   * **NUMBER(string)** → convert to numeric
+   * **STRING(value)** → convert to text
+   * **DATE(value)**, **YEAR/MONTH/DAYOFMONTH**, **TODAY()**, **NOW()**, **DATEDIFF(date1, date2)**
+   * **IF(condition, then, else)**, **AND(), OR(), EQUALS()**
+   * **RANDOM()** (0–1)
+   * **COUNTIF(array, condition)**, **SUMIF(array, condition)**
+   * **CASE(value, LOWER | UPPER | TITLE)**
+   * **ARRAY(val1, val2, …)**
+   * **SUM(), AVERAGE(), COUNT(), MAX(), MIN(), EXISTS()** (use in Aggregate)
+
+> **Tip:** To ensure precise decimals with `SUM`, add values with `+` inside `ROUND`, e.g.
+>
+> ```text
+> ROUND(4.2165 + 5.5546, 7)
+> ```
