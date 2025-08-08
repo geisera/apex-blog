@@ -1,0 +1,175 @@
+---
+title: Trigger Frameworks
+date: '2025/08/09'
+tags: ['triggers', 'frameworks']
+draft: false
+summary: A primer on Salesforce triggers, and trigger frameworks.
+---
+Here's a structured **Salesforce Trigger Framework Study Guide** based on the transcript:
+
+---
+
+## 🧠 **Salesforce Trigger Framework Study Guide**
+
+### 📌 **1. Understanding Apex Triggers**
+
+* **Purpose:** Automate actions in response to DML events (Insert, Update, Delete, Undelete).
+* **Timing:** Can run `before` or `after` DML.
+* **Scope:** Can be created on most standard and all custom objects.
+* **Order of Execution:** Triggers fire at specific steps in Salesforce’s order of operations (especially steps 5 and 19).
+* **Best Practice:** **One Trigger per Object** to:
+
+  * Control execution order.
+  * Simplify debugging.
+  * Enable easier toggling (disable/enable).
+
+---
+
+### 📌 **2. Trigger Handler Pattern**
+
+* **Problem with Large Triggers:**
+
+  * Duplicate logic across events.
+  * Difficult testing and debugging.
+  * Spaghetti code in multi-event triggers.
+* **Solution: Trigger Handler Class**
+
+  * Move logic from trigger to a dedicated Apex class.
+  * Each event (e.g., `beforeInsert`) has its own method.
+  * Cleaner triggers, reusable logic, easier testing.
+
+#### 🧪 **Example:**
+
+```apex
+trigger LeadTrigger on Lead (before insert, after insert) {
+    if (Trigger.isBefore && Trigger.isInsert) {
+        new LeadTriggerHandler().handleBeforeInsert(Trigger.new);
+    }
+}
+```
+
+---
+
+### 📌 **3. Trigger Frameworks Overview**
+
+Frameworks abstract and simplify trigger logic with reusable base classes, standardized event routing, and control over recursion and trigger disabling.
+
+---
+
+### ⚙️ **4. Framework 1: Virtual Class-Based**
+
+#### ✅ Benefits:
+
+* Use a **base virtual class** with overridable event methods.
+* Centralized routing via `.run()` method.
+* Only override needed methods.
+* Clean, consistent triggers (`1 line`).
+
+#### 🧱 Structure:
+
+* `Trigger` → `LeadTriggerHandler` (extends base class) → `TriggerHandler.run()` → `beforeInsert()`
+
+#### ✨ Features:
+
+* Routing based on trigger context (set in constructor).
+* Optional: recursion check, trigger bypass.
+
+#### 🔁 Example:
+
+```apex
+trigger LeadTrigger on Lead (before insert, after insert) {
+    new LeadTriggerHandler().run();
+}
+```
+
+---
+
+### ⚙️ **5. Framework 2: Interface-Based**
+
+#### ✅ Benefits:
+
+* Enforces structure with an `ITriggerHandler` interface.
+* `Dispatcher` class handles routing.
+* Supports disabling triggers via UI (custom settings) or code (static flags).
+
+#### 🧱 Structure:
+
+* `Trigger` → `Dispatcher.run(new ContactTriggerHandler())` → Handler class
+
+#### ✨ Features:
+
+* All context methods (`beforeInsert`, `afterUpdate`, etc.) are required in handler class (can be blank).
+* Strong consistency across org.
+
+#### 🔁 Example:
+
+```apex
+trigger ContactTrigger on Contact (before insert, after insert) {
+    TriggerDispatcher.run(new ContactTriggerHandler());
+}
+```
+
+---
+
+### ⚙️ **6. Framework 3: Full Object-Oriented (OO) Architecture**
+
+#### ✅ Benefits:
+
+* Maximum flexibility and separation of concerns.
+* Supports **different logic for main trigger vs recursive/in-progress triggers**.
+* Modular: one class per event/context.
+
+#### 🧱 Structure:
+
+* `Trigger` → `TriggerFactory` → `AccountTriggerDispatcher` → Routing → `AccountBeforeInsertHandler`
+
+#### 🧩 Classes:
+
+* `TriggerFactory`: Finds dispatcher based on object type.
+* `Dispatcher Interface` + `Base Dispatcher`: Handles routing, recursion check.
+* `Handler Interface` + `Base Handler`: Implements `mainEntry()` and `inProgressEntry()`.
+* **One handler class per event** (e.g., `AccountBeforeInsertHandler`).
+
+#### ✨ Features:
+
+* Granular control per event.
+* Easy to test in isolation.
+* Naming conventions matter (`AccountBeforeInsertHandler` expected).
+
+---
+
+### 🔄 **7. Comparison Summary**
+
+| Feature           | Virtual Class      | Interface-Based    | OO Architecture                 |
+| ----------------- | ------------------ | ------------------ | ------------------------------- |
+| Complexity        | Low                | Medium             | High                            |
+| Setup Effort      | Low                | Medium             | High                            |
+| Required Methods  | Only override used | Must implement all | Main/in-progress per event      |
+| Routing           | Built-in           | Dispatcher         | Factory + Dispatcher            |
+| Disable Support   | Optional           | Yes (UI/code)      | Yes (UI/code)                   |
+| Recursion Control | Optional           | Yes                | Yes                             |
+| Reusability       | Good               | Good               | Excellent                       |
+| Ideal Use         | Simple-medium orgs | Medium orgs        | Complex orgs with many triggers |
+
+---
+
+### 🧩 **8. Additional Best Practices**
+
+* Use naming conventions for consistency.
+* Add recursion guards.
+* Allow framework-based trigger bypass.
+* Start small: implement on new triggers, then migrate old ones.
+
+---
+
+### 🔗 **9. Resources**
+
+* **Virtual Class Framework:** [bit.ly/virtual-trigger-framework](https://bit.ly/virtual-trigger-framework)
+* **Interface Framework:** [bit.ly/interface-trigger-framework](https://bit.ly/interface-trigger-framework)
+* **OO Architecture Framework:** [bit.ly/archtriggerframework](https://bit.ly/archtriggerframework)
+* **Adam’s Blog:** [adamtoarchitect.com](https://adamtoarchitect.com)
+* **Twitter:** [@adam17amo](https://twitter.com/adam17amo)
+
+---
+
+Would you like me to turn this into a downloadable PDF or DOCX?
