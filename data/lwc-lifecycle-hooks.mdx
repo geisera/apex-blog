@@ -1,0 +1,148 @@
+---
+title: LWC Lifecycle Hooks
+date: '2025/08/08'
+tags: ['javascript', 'lwc', 'lifecycle hooks']
+draft: false
+summary: Know your Lightning Web Component lifecycle hooks.
+---
+
+
+## **1. Overview**
+
+Lifecycle hooks in LWC are **JavaScript methods** you can implement to run code at specific points in a component’s lifecycle.
+Think of them as “checkpoints” where you can initialize state, react to changes, handle DOM updates, or clean up.
+
+
+## **2. Hook Execution Order**
+
+For a **new component instance**, the lifecycle generally runs in this order:
+
+1. **Constructor**
+2. **connectedCallback()**
+3. **renderedCallback()** *(after first render)*
+4. **renderedCallback()** *(on every re-render)*
+5. **disconnectedCallback()** *(when removed)*
+
+If you use reactive properties with `@api` or `@track`, **`renderedCallback()`** may run multiple times.
+If you use **`@api` setters**, they can fire before or after `connectedCallback()` depending on when the parent sets the value.
+
+
+## **3. Lifecycle Hooks in Detail**
+
+### **A. `constructor()`**
+
+* **When it runs**: First method called when the component instance is created.
+* **What to do**:
+
+  * Initialize private properties.
+  * Set default values.
+* **What NOT to do**:
+
+  * Access `this.template` or the DOM (it’s not yet created).
+  * Use Lightning Data Service or `@wire` data — not ready yet.
+* **Example**:
+
+  ```js
+  constructor() {
+    super();
+    this.message = 'Hello from constructor';
+  }
+  ```
+
+
+### **B. `connectedCallback()`**
+
+* **When it runs**: After component is inserted into the DOM.
+* **What to do**:
+
+  * Fetch data from server (`@wire`, `fetch`, Apex).
+  * Subscribe to message channels.
+  * Initialize timers or event listeners.
+* **Notes**:
+
+  * Runs **once per component insertion**.
+* **Example**:
+
+  ```js
+  connectedCallback() {
+    console.log('Component inserted in DOM');
+    this.loadData();
+  }
+  ```
+
+
+### **C. `renderedCallback()`**
+
+* **When it runs**: After every render of the component’s template.
+* **What to do**:
+
+  * Perform post-DOM-update logic.
+  * Call third-party DOM libraries (like D3, Chart.js).
+* **Gotchas**:
+
+  * Can run **many times** — avoid infinite loops by guarding logic.
+* **Example**:
+
+  ```js
+  renderedCallback() {
+    if (this.hasRendered) return;
+    this.hasRendered = true;
+    console.log('Rendered for the first time');
+  }
+  ```
+
+
+### **D. `disconnectedCallback()`**
+
+* **When it runs**: When the component is removed from the DOM.
+* **What to do**:
+
+  * Unsubscribe from message channels.
+  * Clear timers and intervals.
+  * Remove event listeners.
+* **Example**:
+
+  ```js
+  disconnectedCallback() {
+    clearInterval(this.refreshTimer);
+    console.log('Component removed from DOM');
+  }
+  ```
+
+### **E. `errorCallback(error, stack)`**
+
+* **When it runs**: If an error is thrown in a child component.
+* **What to do**:
+
+  * Log errors.
+  * Display fallback UI.
+* **Example**:
+
+  ```js
+  errorCallback(error, stack) {
+    console.error('Error in child', error, stack);
+  }
+  ```
+
+## **4. Best Practices**
+
+* **Guard Against Infinite Loops**: Avoid property changes inside `renderedCallback()` unless conditional.
+* **Use the Right Hook for the Job**:
+
+  * **Init state** → `constructor()`
+  * **Load data** → `connectedCallback()`
+  * **DOM manipulation** → `renderedCallback()`
+  * **Cleanup** → `disconnectedCallback()`
+* **Remember Reactivity**: Property changes may trigger re-renders and thus re-run `renderedCallback()`.
+* **Unsubscribe & Cleanup**: Always tear down listeners and timers in `disconnectedCallback()`.
+
+## **5. Quick Reference Table**
+
+| Hook                     | Timing                    | DOM Access? | Typical Use Cases                   |
+| ------------------------ | ------------------------- | ----------- | ----------------------------------- |
+| `constructor()`          | Component created         | ❌          | Initialize properties               |
+| `connectedCallback()`    | Inserted into DOM         | ✅          | Fetch data, register listeners      |
+| `renderedCallback()`     | After render (every time) | ✅          | DOM manipulation, post-render logic |
+| `disconnectedCallback()` | Removed from DOM          | ✅          | Cleanup resources                   |
+| `errorCallback()`        | Error in child component  | ✅          | Error handling                      |
+

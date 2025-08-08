@@ -1,0 +1,149 @@
+---
+title: Apex Interview Prep
+date: '2025/07/09'
+tags: ['apex', 'interview prep']
+draft: false
+summary: Selected topics for Apex developer prep.
+---
+### Apex Technical Interview Prep Summary
+
+---
+
+#### Variables & Data Types
+
+* Apex uses strong typing. Declare variables with explicit data types.
+* Common types:
+
+  * `Integer`, `Decimal`, `Double`: for numerical operations
+  * `String`, `Boolean`, `Date`, `Datetime`, `Time`, `Id`: native types for platform-specific operations
+* Always initialize if possible. Constants use `final` keyword.
+
+#### Collections
+```apex
+* List<T>: ordered collection, allows duplicates
+* Set<T>: unordered, no duplicates
+* Map\<K,V>: key-value structure
+* Use `for-each` loops, collection methods (`add`, `remove`, `containsKey`, etc.)
+* Always bulkify logic using collections for governor limit safety
+```
+#### sObjects
+
+* All Salesforce records are `sObject`-based (e.g., `Account`, `Contact`)
+* Cast dynamically using `(Account)sObject`
+* Dynamic access with `.get(fieldName)`, `.put(fieldName, value)`
+* Use `List<sObject>` for cross-object operations or dynamic queries
+
+#### DML (Data Manipulation Language)
+
+* `insert`, `update`, `delete`, `upsert` to manipulate records
+* Use collections to handle batches
+* Wrap operations in try/catch for error handling
+* DML inside loops = anti-pattern; extract SOQL/DML outside of iterations
+
+#### Enums
+
+* Use `enum` to define finite sets of values
+* Common with state logic (e.g., workflow steps)
+* Pair with `switch` for clear logic branching
+
+#### Operators & Control Flow
+
+* Standard operators: arithmetic (`+`, `-`), comparison (`==`, `!=`), logical (`&&`, `||`), ternary (`?:`)
+* **If/else**: conditional logic
+* **Switch**: cleaner branching (works with enums and strings)
+* **Loops**:
+
+  * `for`: classic counter-controlled
+  * `for-each`: iterate collections
+  * `while` and `do-while`: conditional repetition
+
+#### Triggers
+
+* Execute logic before/after record DML
+* Syntax: `trigger Name on Object (events)`
+* Use context variables:
+
+  * `Trigger.new`, `Trigger.old`
+  * `Trigger.isBefore`, `Trigger.isAfter`, `Trigger.isInsert`, etc.
+* Best practices:
+
+  * Always bulkify
+  * Move logic to handler classes
+  * Avoid recursive triggers
+
+#### SOQL (Salesforce Object Query Language)
+
+* Used to query records
+* Syntax: `SELECT fields FROM Object WHERE conditions`
+* Filtering: `=`, `!=`, `LIKE`, `IN`, `NOT IN`, `AND`, `OR`
+* Aggregates: `COUNT()`, `SUM()`, `AVG()`, `GROUP BY`, `HAVING`
+* Relationships:
+
+  * Parent: `SELECT Account.Name FROM Contact`
+  * Child: `SELECT Name, (SELECT LastName FROM Contacts) FROM Account`
+* Always use `LIMIT` and bind variables using `:variable`
+
+#### Dynamic SOQL
+
+* Build queries at runtime
+* Use `Database.query(String)`
+* Escape inputs with `String.escapeSingleQuotes()`
+* Supports flexible searches, admin tools, and UI-driven filters
+
+#### SOSL (Search)
+
+* Keyword-based, cross-object searching
+* Syntax: `FIND 'text' RETURNING Object(Field, Field)`
+* Result is a list of lists: one list per object type
+* Ideal for global search, type-ahead inputs
+
+#### Apex Classes
+
+* Building blocks of Apex
+* Can contain:
+
+  * Properties (`{ get; set; }`)
+  * Methods (void/return types)
+  * Static methods/blocks
+  * Constructors (same name as class)
+  * Inner classes
+* Use `this` to reference current instance
+* `final` fields are immutable after assignment
+
+#### Object-Oriented Features
+
+* **Inheritance**: `class Sub extends Super`
+* **Interfaces**: contract for method signatures; implemented with `implements`
+* **Abstract Classes**: can't be instantiated; define common structure with abstract methods
+* **Virtual**: allow overriding without requiring it
+* Use `override` for method specialization
+* Promote code reuse, testability, and maintainability
+
+#### Serialization & Wrappers
+
+* Use JSON methods to serialize/deserialize Apex objects:
+
+  * `JSON.deserialize(json, Class.class)`
+* Wrappers used in UI for checkboxes, selection, etc.
+
+  ```apex
+  public class MyWrapper {
+      public Account acc;
+      public Boolean selected;
+  }
+  ```
+
+---
+
+### Interview Tips
+
+* Focus on **bulkification**, **governor limits**, and **clean architecture**
+* Practice writing SOQL and triggers by hand
+* Know when to use interfaces, abstract classes, and inheritance
+* Be able to explain how you’d write a reusable, testable trigger framework
+* Be clear on the difference between SOQL, SOSL, and Dynamic SOQL
+* Know how to use `@testSetup`, `System.assertEquals()`, and test classes
+
+---
+
+Stay sharp. Think bulk, code clean, and always be testable.
