@@ -20,8 +20,6 @@ summary: A primer on Salesforce triggers, and trigger frameworks.
   * Simplify debugging.
   * Enable easier toggling (disable/enable).
 
----
-
 ### 📌 **2. Trigger Handler Pattern**
 
 * **Problem with Large Triggers:**
@@ -45,13 +43,9 @@ trigger LeadTrigger on Lead (before insert, after insert) {
 }
 ```
 
----
-
 ### 📌 **3. Trigger Frameworks Overview**
 
 Frameworks abstract and simplify trigger logic with reusable base classes, standardized event routing, and control over recursion and trigger disabling.
-
----
 
 ### ⚙️ **4. Framework 1: Virtual Class-Based**
 
@@ -79,8 +73,6 @@ trigger LeadTrigger on Lead (before insert, after insert) {
 }
 ```
 
----
-
 ### ⚙️ **5. Framework 2: Interface-Based**
 
 #### ✅ Benefits:
@@ -105,8 +97,6 @@ trigger ContactTrigger on Contact (before insert, after insert) {
     TriggerDispatcher.run(new ContactTriggerHandler());
 }
 ```
-
----
 
 ### ⚙️ **6. Framework 3: Full Object-Oriented (OO) Architecture**
 
@@ -133,8 +123,6 @@ trigger ContactTrigger on Contact (before insert, after insert) {
 * Easy to test in isolation.
 * Naming conventions matter (`AccountBeforeInsertHandler` expected).
 
----
-
 ### 🔄 **7. Comparison Summary**
 
 | Feature           | Virtual Class      | Interface-Based    | OO Architecture                 |
@@ -148,7 +136,6 @@ trigger ContactTrigger on Contact (before insert, after insert) {
 | Reusability       | Good               | Good               | Excellent                       |
 | Ideal Use         | Simple-medium orgs | Medium orgs        | Complex orgs with many triggers |
 
----
 
 ### 🧩 **8. Additional Best Practices**
 
@@ -157,12 +144,3 @@ trigger ContactTrigger on Contact (before insert, after insert) {
 * Allow framework-based trigger bypass.
 * Start small: implement on new triggers, then migrate old ones.
 
----
-
-### 🔗 **9. Resources**
-
-* **Virtual Class Framework:** [bit.ly/virtual-trigger-framework](https://bit.ly/virtual-trigger-framework)
-* **Interface Framework:** [bit.ly/interface-trigger-framework](https://bit.ly/interface-trigger-framework)
-* **OO Architecture Framework:** [bit.ly/archtriggerframework](https://bit.ly/archtriggerframework)
-* **Adam’s Blog:** [adamtoarchitect.com](https://adamtoarchitect.com)
-* **Twitter:** [@adam17amo](https://twitter.com/adam17amo)
